@@ -4,8 +4,6 @@ App_Data
 HealthyCampusWebApp.Models.RecipeContext.mdf
 App_Data/HealthyCampusWebApp.Models.RecipeContext.mdf
 
-bin/
-obj/
 
 # Use wildcards as well
 *~
