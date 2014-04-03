@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations;
 
 namespace HealthyCampusWebApp.Models
 {
@@ -15,11 +16,14 @@ namespace HealthyCampusWebApp.Models
     public class Recipe
     {
         public int RecipeId { get; set; }
+        [MaxLength(100)]
+        [Required]
         public string Title { get; set; }
         public string Description { get; set; }
         public double PrepTime { get; set; }
         public double CookTime { get; set; }
         public int DifficultyLevel { get; set; }
+        public string ImageURL { get; set; }
 
         public virtual List<Tag> Tags { get; set; }
         public virtual List<Ingredient> Ingredients { get; set; }
