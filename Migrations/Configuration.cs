@@ -1,19 +1,20 @@
 namespace HealthyCampusWebApp.Migrations
 {
+    using HealthyCampusWebApp.Models;
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<HealthyCampusWebApp.Models.RecipeContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<HealthyCampusWebApp.Models.HealthyCampusContext>
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
-            ContextKey = "HealthyCampusWebApp.Models.RecipeContext";
+            AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(HealthyCampusWebApp.Models.RecipeContext context)
+        protected override void Seed(HealthyCampusWebApp.Models.HealthyCampusContext context)
         {
             //  This method will be called after migrating to the latest version.
 
@@ -27,6 +28,7 @@ namespace HealthyCampusWebApp.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+
         }
     }
 }

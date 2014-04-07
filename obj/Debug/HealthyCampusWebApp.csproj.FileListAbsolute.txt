@@ -36,3 +36,7 @@ C:\Users\Enda\documents\visual studio 2012\Projects\HealthyCampusWebApp\bin\Enti
 C:\Users\Enda\documents\visual studio 2012\Projects\HealthyCampusWebApp\bin\EntityFramework.SqlServer.dll
 C:\Users\Enda\documents\visual studio 2012\Projects\HealthyCampusWebApp\bin\EntityFramework.xml
 C:\Users\Enda\documents\visual studio 2012\Projects\HealthyCampusWebApp\bin\EntityFramework.SqlServer.xml
+C:\Users\Enda\Documents\Visual Studio 2012\Projects\HealthyCampusWebApp\bin\HealthyCampusWebApp.dll.config
+C:\Users\Enda\Documents\Visual Studio 2012\Projects\HealthyCampusWebApp\bin\Newtonsoft.Json.dll
+C:\Users\Enda\Documents\Visual Studio 2012\Projects\HealthyCampusWebApp\obj\Debug\HealthyCampusWebApp.Migrations.HealthyCampus.resources
+C:\Users\Enda\Documents\Visual Studio 2012\Projects\HealthyCampusWebApp\obj\Debug\HealthyCampusWebApp.csproj.GenerateResource.Cache

@@ -43,7 +43,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework.SqlServer">
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
@@ -186,16 +187,18 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RecipeController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201404022348008_InitialCreate.cs" />
-    <Compile Include="Migrations\201404022348008_InitialCreate.Designer.cs">
-      <DependentUpon>201404022348008_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201404040107236_HealthyCampus.cs" />
+    <Compile Include="Migrations\201404040107236_HealthyCampus.Designer.cs">
+      <DependentUpon>201404040107236_HealthyCampus.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\DatabaseInitializer.cs" />
     <Compile Include="Models\Ingredient.cs" />
     <Compile Include="Models\Recipe.cs" />
     <Compile Include="Models\Tag.cs" />
@@ -259,6 +262,8 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="Images\healthyCampusLogoWithTitle.jpg" />
+    <Content Include="Scripts\addTagComponentToPage.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -305,23 +310,27 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
+    <Content Include="Views\Recipe\index.cshtml" />
+    <Content Include="Views\Recipe\Create.cshtml" />
+    <Content Include="Views\Recipe\Edit.cshtml" />
+    <Content Include="Views\Recipe\Details.cshtml" />
+    <Content Include="Views\Recipe\Delete.cshtml" />
+    <Content Include="Views\Home\index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201404022348008_InitialCreate.resx">
-      <DependentUpon>201404022348008_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201404040107236_HealthyCampus.resx">
+      <DependentUpon>201404040107236_HealthyCampus.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -10,6 +10,6 @@ namespace HealthyCampusWebApp.Models
         public int IngredientId { get; set; }
         public string Name { get; set; }
         public int AmountInGrams { get; set; }
-        public string Type { get; set; }
+        public string IngredientType { get; set; }
     }
 }

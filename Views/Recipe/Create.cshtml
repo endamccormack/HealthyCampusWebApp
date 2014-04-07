@@ -1,0 +1,167 @@
+﻿@using HealthyCampusWebApp.Models;
+@model HealthyCampusWebApp.Models.Recipe
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/Scripts/addTagComponentToPage.js"></script>
+<h2>Create Recipe</h2>
+@using (Html.BeginForm("Create", "Recipe", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Recipe</legend>
+
+        <label for="file">Upload Image:</label>
+        <input type="file" id="imageFile" name="imageFile" />
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Title)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Title)
+            @Html.ValidationMessageFor(model => model.Title)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Description)
+        </div>
+        <div class="editor-field">  
+            @Html.TextAreaFor(model => model.Description)
+            @Html.ValidationMessageFor(model => model.Description)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PrepTime)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PrepTime)
+            @Html.ValidationMessageFor(model => model.PrepTime)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CookTime)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CookTime)
+            @Html.ValidationMessageFor(model => model.CookTime)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DifficultyLevel)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DifficultyLevel)
+            @Html.ValidationMessageFor(model => model.DifficultyLevel)
+        </div>
+
+        <div class="editor-field">
+               
+
+            @Html.ValidationMessageFor(model => model.ImageURL)
+        </div>
+
+        <div id="tags">
+            <h2>Add Tags for the recipes</h2>
+            <div id="addCurrentTabContainer" class="column50">
+                <a onclick="addTagDropDownList()">Add a current tag</a><br />
+                @Html.DropDownListFor(m => m.Tags,
+                        new SelectList(new HealthyCampusContext().Tags, "TagName", "TagName"))<br />
+                
+            </div>
+            <div id="addNewTagContainer" class="column50">
+                <a onclick="addTagTextboxForNewTag()">Add new tag</a><br/>
+                <input type="text" name="tag" id="tag" value=""><br />
+            </div>
+        </div>
+
+        <div class="clearFloat" id="ingredients">
+            <h2>Add Ingredients for the recipe</h2>
+            <a onclick="showMeasurements()" id="showMeasurements">Show metric to US conversions</a>
+            <div id="measurementsTable">
+                <table border="1">
+                    <tbody>
+                        <tr>
+                            <th colspan="2" align="center" valign="top">Capacity</th>
+                            <th colspan="2" align="center" valign="top">Weight</th>
+                        </tr>
+                        <tr>
+                            <td align="left" valign="top">1 milliliter </td>
+                            <td align="left" valign="top"><sup>1</sup>/5 teaspoon</td>
+                            <td align="left" valign="top">1 gram </td>
+                            <td align="left" valign="top">.035 ounce</td>
+                        </tr>
+                        <tr>
+                            <td align="left" valign="top">5 ml </td>
+                            <td align="left" valign="top">1 teaspoon</td>
+                            <td align="left" valign="top">100 grams </td>
+                            <td align="left" valign="top">3.5 ounces</td>
+                        </tr>
+                        <tr>
+                            <td align="left" valign="top">15 ml </td>
+                            <td align="left" valign="top">1 tablespoon</td>
+                            <td align="left" valign="top">500 grams</td>
+                            <td align="left" valign="top">1.10 pounds</td>
+                        </tr>
+                        <tr>
+                            <td align="left" valign="top">100 ml </td>
+                            <td align="left" valign="top">3.4 fluid oz</td>
+                            <td align="left" valign="top">1 kilogram </td>
+                            <td align="left" valign="top">2.205 pounds<br>=&nbsp;35 ounces</td>
+                        </tr>
+                        <tr>
+                            <td align="left" valign="top">240 ml </td>
+                            <td align="left" valign="top">1 cup</td>
+                            <td align="right" valign="top">&nbsp;</td>
+                            <td align="left" valign="top">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td align="left" valign="top">1 liter</td>
+                            <td align="left" valign="top">34 fluid oz<br>=&nbsp;4.2 cups<br>=&nbsp;2.1 pints<br>=&nbsp;1.06 quarts<br>=&nbsp;0.26 gallon<br></td>
+                            <td align="left" valign="top">&nbsp;</td>
+                            <td align="left" valign="top">&nbsp;</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <a onclick="addIngredientsRow()">Add a new row</a><br />
+            <table id="ingredientsTable">
+                <thead>
+                    <tr>
+                        <th>Ingredient Name</th>
+                        <th>Amount</th>
+                        <th>Measurement</th>
+                    </tr>
+                </thead>
+                <tr>
+                    <td><input type="text" name="ingredientName" id="ingredientName" value=""></td>
+                    <td><input type="text" name="ingredientAmount" id="ingredientAmount" value=""></td>
+                    <td>
+                        <select name="ingredientAmountMeasure" id="ingredientAmountMeasure">
+                            <option value="grams">grams</option>
+                            <option value="milliliters">milliliters</option>
+                            <option value="teaspoon">teaspoon</option>
+                            <option value="tablespoon">tablespoon</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+</fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -754,3 +754,17 @@ tr.pager td {
             margin: 0;
         }
 }
+
+
+.column50{
+    width:50%;
+    float: left;
+}
+.clearFloat{
+    clear:both;
+}
+select{
+    height: 31px;
+    width: 312px;
+    margin: 5px 0 6px 0;
+}

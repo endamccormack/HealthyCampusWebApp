@@ -8,9 +8,11 @@ using System.ComponentModel.DataAnnotations;
 namespace HealthyCampusWebApp.Models
 {
 
-    public class RecipeContext : DbContext
+    public class HealthyCampusContext : DbContext
     {
         public DbSet<Recipe> Recipes { get; set; }
+        public DbSet<Tag> Tags { get; set; }
+        //public DbSet<Ingredient> Ingredients { get; set; }
     }
 
     public class Recipe
@@ -24,7 +26,7 @@ namespace HealthyCampusWebApp.Models
         public double CookTime { get; set; }
         public int DifficultyLevel { get; set; }
         public string ImageURL { get; set; }
-
+        
         public virtual List<Tag> Tags { get; set; }
         public virtual List<Ingredient> Ingredients { get; set; }
     } 
