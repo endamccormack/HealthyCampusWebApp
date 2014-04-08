@@ -1,4 +1,5 @@
 ﻿using HealthyCampusWebApp.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -8,6 +9,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 using System.Web.UI.WebControls;
 
 namespace HealthyCampusWebApp.Controllers
@@ -187,12 +189,72 @@ namespace HealthyCampusWebApp.Controllers
             return base.File(FilePath, "image/jpeg");
         }
 
-        public ActionResult json()
+        public ActionResult RecipeJson()
         {
-            var allRecipes = new HealthyCampusContext().Recipes;
+       
+            using(var db = new HealthyCampusContext())
+            {
+                var allRecipes = from r in db.Recipes select new {r.RecipeId, r.Title, r.Description, r.Method, r.PrepTime, r.CookTime, r.DifficultyLevel, r.ImageURL};
 
-            return Json(allRecipes, JsonRequestBehavior.AllowGet);
+                var jsonSerialiser = new JavaScriptSerializer();
+                string json = string.Format("{0}", JsonConvert.SerializeObject(allRecipes));
+
+                return View("Json", null, json);
+            }
         }
+        public ActionResult TagJson()
+        {
+            using (var db = new HealthyCampusContext())
+            {
+                var allTags = from t in db.Tags select new { t.TagName };
 
+                var jsonSerialiser = new JavaScriptSerializer();
+                string json = string.Format("{0}", JsonConvert.SerializeObject(allTags));
+
+                return View("Json", null, json);
+            }
+        }
+        public ActionResult IngredientJson()
+        {
+            using (var db = new HealthyCampusContext())
+            {
+                var allIngredients = from i in db.Ingredients select i;
+
+                var jsonSerialiser = new JavaScriptSerializer();
+                string json = string.Format("{0}", JsonConvert.SerializeObject(allIngredients));
+
+                return View("Json", null, json);
+            }
+        }
+        public ActionResult RecipeTagJson()
+        {
+
+            using (var db = new HealthyCampusContext())
+            {
+
+                var allRecipes = from r in db.Recipes select r;
+                var allTags = from t in db.Tags select t;
+
+                List<RecipeTag> rt = new List<RecipeTag>();
+
+                foreach (Recipe r in allRecipes)
+                {
+                    foreach(Tag t in r.Tags)
+                    {
+                        rt.Add(new RecipeTag() { RecipeId = r.RecipeId, TagName = t.TagName });
+                    }
+                }
+
+                var jsonSerialiser = new JavaScriptSerializer();
+                string json = string.Format("{0}", JsonConvert.SerializeObject(rt));
+
+                return View("Json", null, json);
+            }
+        }
+    }
+
+    class RecipeTag{
+        public int RecipeId { get; set; }
+        public string TagName { get; set; }
     }
 }

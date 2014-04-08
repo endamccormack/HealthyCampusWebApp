@@ -192,9 +192,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201404040107236_HealthyCampus.cs" />
-    <Compile Include="Migrations\201404040107236_HealthyCampus.Designer.cs">
-      <DependentUpon>201404040107236_HealthyCampus.cs</DependentUpon>
+    <Compile Include="Migrations\201404071641449_AllModelsCreate.cs" />
+    <Compile Include="Migrations\201404071641449_AllModelsCreate.Designer.cs">
+      <DependentUpon>201404071641449_AllModelsCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
@@ -320,6 +320,7 @@
     <Content Include="Views\Recipe\Details.cshtml" />
     <Content Include="Views\Recipe\Delete.cshtml" />
     <Content Include="Views\Home\index.cshtml" />
+    <Content Include="Views\Recipe\Json.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -329,8 +330,8 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201404040107236_HealthyCampus.resx">
-      <DependentUpon>201404040107236_HealthyCampus.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201404071641449_AllModelsCreate.resx">
+      <DependentUpon>201404071641449_AllModelsCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

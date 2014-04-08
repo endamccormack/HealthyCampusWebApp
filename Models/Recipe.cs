@@ -12,7 +12,7 @@ namespace HealthyCampusWebApp.Models
     {
         public DbSet<Recipe> Recipes { get; set; }
         public DbSet<Tag> Tags { get; set; }
-        //public DbSet<Ingredient> Ingredients { get; set; }
+        public DbSet<Ingredient> Ingredients { get; set; }
     }
 
     public class Recipe
@@ -22,6 +22,7 @@ namespace HealthyCampusWebApp.Models
         [Required]
         public string Title { get; set; }
         public string Description { get; set; }
+        public string Method { get; set; }
         public double PrepTime { get; set; }
         public double CookTime { get; set; }
         public int DifficultyLevel { get; set; }
