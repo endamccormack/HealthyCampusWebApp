@@ -37,7 +37,7 @@ namespace HealthyCampusWebApp.Controllers
         {
             if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
             {
-                return RedirectToLocal(returnUrl);
+                return RedirectToAction("Index", "Recipe");
             }
 
             // If we got this far, something failed, redisplay form
@@ -61,7 +61,7 @@ namespace HealthyCampusWebApp.Controllers
         // GET: /Account/Register
 
         [AllowAnonymous]
-        public ActionResult Register()
+        public ActionResult register()
         {
             return View();
         }
@@ -323,10 +323,11 @@ namespace HealthyCampusWebApp.Controllers
                     ProviderUserId = account.ProviderUserId,
                 });
             }
-
+           
             ViewBag.ShowRemoveButton = externalLogins.Count > 1 || OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
             return PartialView("_RemoveExternalLoginsPartial", externalLogins);
         }
+
 
         #region Helpers
         private ActionResult RedirectToLocal(string returnUrl)

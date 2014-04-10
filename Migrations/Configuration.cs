@@ -13,7 +13,6 @@ namespace HealthyCampusWebApp.Migrations
         {
             AutomaticMigrationsEnabled = false;
         }
-
         protected override void Seed(HealthyCampusWebApp.Models.HealthyCampusContext context)
         {
             //  This method will be called after migrating to the latest version.
@@ -28,12 +27,10 @@ namespace HealthyCampusWebApp.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
-
-            using (var db = new HealthyCampusContext())
-            {
+            try { 
                 #region
-                Tag t1 = new Tag() { TagName = "Breakfast" };
-                Tag t2 = new Tag() { TagName = "Snack" };
+                Tag t1 = new Tag() { TagName = "breakfast" };
+                Tag t2 = new Tag() { TagName = "snack" };
 
                 List<Tag> tags = new List<Tag>();
                 tags.Add(t1);
@@ -42,19 +39,19 @@ namespace HealthyCampusWebApp.Migrations
                 #region
                 Ingredient i1 = new Ingredient()
                 {
-                    Name = "Flour",
+                    Name = "flour",
                     AmountInGrams = 400,
                     IngredientType = "grams"
                 };
 
                 Ingredient i2 = new Ingredient()
                 {
-                    Name = "Eg",
+                    Name = "eg",
                     AmountInGrams = 400
                 };
                 Ingredient i3 = new Ingredient()
                 {
-                    Name = "Milk",
+                    Name = "milk",
                     AmountInGrams = 400,
                     IngredientType = "mililiters"
                 };
@@ -67,16 +64,20 @@ namespace HealthyCampusWebApp.Migrations
 
                 Recipe r = new Recipe()
                 {
-                    Title = "Pancakes",
-                    Description = "Lorem Ipsum blahhhhhhhhhhhhhhhhhhhhh",
+                    Title = "pancakes",
+                    Description = "lorem ipsum blahhhhhhhhhhhhhhhhhhhhh",
                     PrepTime = 1.5,
                     CookTime = 10,
                     DifficultyLevel = 5,
                     Tags = tags,
                     Ingredients = ingredients
                 };
-                db.Recipes.Add(r);
-                db.SaveChanges();
+                context.Recipes.AddOrUpdate(r);
+                context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message.ToString());
             }
         }
     }

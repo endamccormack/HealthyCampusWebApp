@@ -13,7 +13,7 @@ namespace HealthyCampusWebApp.Controllers
 
         public ActionResult Index()
         {
-            return RedirectToAction("login", "Account");
+            return RedirectToAction("Index", "Recipe");
         }
     }
 }

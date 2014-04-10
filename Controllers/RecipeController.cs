@@ -20,7 +20,7 @@ namespace HealthyCampusWebApp.Controllers
         // GET: /Recipe/
 
         const string FilePath = "~/Images/uploads/";
-
+        [Authorize]
         public ActionResult Index()
         {
             var db = new HealthyCampusContext();
@@ -31,7 +31,7 @@ namespace HealthyCampusWebApp.Controllers
 
         //
         // GET: /Recipe/Details/5
-
+        [Authorize]
         public ActionResult Details(int id)
         {
             var db = new HealthyCampusContext();
@@ -42,7 +42,7 @@ namespace HealthyCampusWebApp.Controllers
 
         //
         // GET: /Recipe/Create
-
+        [Authorize]
         public ActionResult Create()
         {
             Recipe r = new Recipe();
@@ -54,6 +54,7 @@ namespace HealthyCampusWebApp.Controllers
         // POST: /Recipe/Create
 
         [HttpPost]
+        [Authorize]
         public ActionResult Create(FormCollection values, Recipe recipe)
         {
 
@@ -160,7 +161,7 @@ namespace HealthyCampusWebApp.Controllers
 
         //
         // GET: /Recipe/Delete/5
-
+        [Authorize]
         public ActionResult Delete(int id)
         {
             return View();
@@ -170,6 +171,7 @@ namespace HealthyCampusWebApp.Controllers
         // POST: /Recipe/Delete/5
 
         [HttpPost]
+        [Authorize]
         public ActionResult Delete(int id, FormCollection collection)
         {
             try
