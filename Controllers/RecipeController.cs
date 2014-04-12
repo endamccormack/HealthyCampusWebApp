@@ -233,22 +233,10 @@ namespace HealthyCampusWebApp.Controllers
 
             using (var db = new HealthyCampusContext())
             {
-
-                var allRecipes = from r in db.Recipes select r;
-                var allTags = from t in db.Tags select t;
-
-                List<RecipeTag> rt = new List<RecipeTag>();
-
-                foreach (Recipe r in allRecipes)
-                {
-                    foreach(Tag t in r.Tags)
-                    {
-                        rt.Add(new RecipeTag() { RecipeId = r.RecipeId, TagName = t.TagName });
-                    }
-                }
+                var allRecipeTag = db.Database.SqlQuery<RecipeTag>("SELECT TagName = [Tag_TagName] , RecipeId = [Recipe_RecipeId] FROM [TagRecipes]").ToList();
 
                 var jsonSerialiser = new JavaScriptSerializer();
-                string json = string.Format("{0}", JsonConvert.SerializeObject(rt));
+                string json = string.Format("{0}", JsonConvert.SerializeObject(allRecipeTag));
 
                 return View("Json", null, json);
             }
