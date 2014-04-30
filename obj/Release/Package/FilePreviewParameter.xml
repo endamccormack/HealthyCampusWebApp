@@ -1,13 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
   <parameter name="IIS Web Application Name" description="" value="healthycampusportal" tags="IisApp">
-    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\Enda\\Documents\\Visual\ Studio\ 2012\\Projects\\HealthyCampusWebApp\\obj\\Release\\Package\\PackageTmp$" />
-    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\Enda\\Documents\\Visual\ Studio\ 2012\\Projects\\HealthyCampusWebApp\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\endacormack\\Documents\\github\\HealthyCampusWebApp\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\endacormack\\Documents\\github\\HealthyCampusWebApp\\obj\\Release\\Package\\PackageTmp$" />
   </parameter>
-  <parameter name="DefaultConnection-Web.config Connection String" description="" value="Data Source=csg17zilvp.database.windows.net;Initial Catalog=HealthyCampusPortalDB;Persist Security Info=True;User ID=HealthyCampus;Password=1Password2" tags="">
-    <parameterEntry kind="XmlFile" scope="C:\\Users\\Enda\\Documents\\Visual\ Studio\ 2012\\Projects\\HealthyCampusWebApp\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
-  </parameter>
-  <parameter name="HealthyCampusWebApp.Models.HealthyCampusContext-Web.config Connection String" description="" value="Data Source=csg17zilvp.database.windows.net;Initial Catalog=HealthyCampusPortalDB;User ID=HealthyCampus;Password=1Password2" tags="">
-    <parameterEntry kind="XmlFile" scope="C:\\Users\\Enda\\Documents\\Visual\ Studio\ 2012\\Projects\\HealthyCampusWebApp\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='HealthyCampusWebApp.Models.HealthyCampusContext']/@connectionString" />
+  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." value="Data Source=(LocalDb)\v11.0;Initial Catalog=aspnet-HealthyCampusWebApp-20140402145832;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\aspnet-HealthyCampusWebApp-20140402145832.mdf" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\endacormack\\Documents\\github\\HealthyCampusWebApp\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
   </parameter>
 </parameters>
